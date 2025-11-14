@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somai - Gestão Inteligente para o seu Restaurante</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@0.378.0/dist/umd/lucide.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2), 0 4px 6px -4px rgba(79, 70, 229, 0.2);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+        .accordion-button.open .chevron {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+             <div class="flex items-center gap-3">
+                <div class="bg-indigo-600 text-white w-10 h-10 flex items-center justify-center rounded-lg">
+                    <i data-lucide="gem"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-slate-800">Somai</h1>
+            </div>
+            <a href="#cta" class="cta-button bg-indigo-600 text-white font-semibold py-2 px-5 rounded-lg hover:bg-indigo-700">Começar Agora</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-white">
+        <div class="container mx-auto px-6 py-16 md:py-24 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight">
+                Pare de Perder Tempo e Dinheiro.
+            </h1>
+            <h2 class="text-4xl md:text-6xl font-extrabold text-indigo-600 leading-tight mt-2">
+                A Gestão Inteligente Começa Aqui.
+            </h2>
+            <p class="mt-6 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
+                O Somai centraliza seus pedidos, caixa, estoque e clientes em um só lugar. Tenha o controlo total e veja seu lucro crescer de forma organizada e sem stress.
+            </p>
+            <a href="#cta" class="cta-button inline-block bg-indigo-600 text-white font-bold text-lg py-4 px-10 rounded-lg mt-10 hover:bg-indigo-700">
+                Experimente o Somai Agora
+            </a>
+            <div class="mt-12">
+                <img src="https://placehold.co/1000x560/E2E8F0/64748B?text=Painel+Somai" alt="Painel do sistema Somai num tablet" class="rounded-2xl shadow-2xl mx-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-indigo-600 font-semibold uppercase tracking-wider">Benefícios</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Mais Lucro, Menos Dor de Cabeça</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full mb-6">
+                        <i data-lucide="gem" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Controlo Total do Caixa</h3>
+                    <p class="text-slate-600">Abra e feche o caixa com um clique, controle todas as entradas por método de pagamento e evite furos no final do dia. Simples e seguro.</p>
+                </div>
+                <!-- Benefit 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full mb-6">
+                        <i data-lucide="shopping-cart" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Pedidos sem Complicação</h3>
+                    <p class="text-slate-600">Receba e organize pedidos de entrega e retirada de forma rápida e visual. Menos erros na cozinha, clientes mais felizes e mais tempo para si.</p>
+                </div>
+                <!-- Benefit 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full mb-6">
+                        <i data-lucide="boxes" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Estoque Inteligente</h3>
+                    <p class="text-slate-600">Saiba exatamente o que precisa comprar. O Somai avisa quando seus ingredientes estão a acabar, evitando desperdício e falta de produtos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+             <div class="text-center mb-12">
+                <span class="text-indigo-600 font-semibold uppercase tracking-wider">Funcionalidades</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Todas as Ferramentas que Precisa para Crescer</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="flex items-start gap-4">
+                    <i data-lucide="layout-dashboard" class="w-8 h-8 text-indigo-600 flex-shrink-0 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-lg">Painel de Controlo Central</h4>
+                        <p class="text-slate-600 mt-1">Visão completa do seu dia com os dados do caixa, vendas e pedidos num único ecrã.</p>
+                    </div>
+                </div>
+                 <div class="flex items-start gap-4">
+                    <i data-lucide="truck" class="w-8 h-8 text-indigo-600 flex-shrink-0 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-lg">Gestão de Entregas</h4>
+                        <p class="text-slate-600 mt-1">Organize os pedidos pendentes, atribua motoboys e garanta que cada entrega chegue na hora certa.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <i data-lucide="users" class="w-8 h-8 text-indigo-600 flex-shrink-0 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-lg">Cadastro de Clientes (CRM)</h4>
+                        <p class="text-slate-600 mt-1">Guarde o histórico de pedidos e os dados dos seus clientes para um atendimento personalizado.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <i data-lucide="dollar-sign" class="w-8 h-8 text-indigo-600 flex-shrink-0 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-lg">Relatórios Financeiros</h4>
+                        <p class="text-slate-600 mt-1">Acompanhe receitas e despesas com relatórios simples e tome decisões baseadas em dados reais.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <i data-lucide="package" class="w-8 h-8 text-indigo-600 flex-shrink-0 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-lg">Controlo de Estoque</h4>
+                        <p class="text-slate-600 mt-1">Evite o desperdício e a falta de produtos com alertas de estoque mínimo.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <i data-lucide="bot" class="w-8 h-8 text-indigo-600 flex-shrink-0 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-lg">Suporte com IA (Somia)</h4>
+                        <p class="text-slate-600 mt-1">A sua assistente pessoal, Somia, responde às suas dúvidas sobre o sistema a qualquer hora do dia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objection Handling Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6 max-w-3xl">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Ainda tem dúvidas?</h2>
+                <p class="text-slate-600 mt-3 text-lg">Respostas para as perguntas mais comuns.</p>
+            </div>
+            <div id="faq-accordion" class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-lg border border-slate-200">
+                    <button class="accordion-button flex justify-between items-center w-full p-6 text-left font-semibold">
+                        <span>O sistema é muito caro?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 chevron transition-transform"></i>
+                    </button>
+                    <div class="accordion-content px-6">
+                        <p class="pb-6 text-slate-600">O Somai tem planos flexíveis que se pagam sozinhos com a economia de tempo e a redução de desperdícios. Pense nele como um investimento no seu lucro, não um custo. O controlo que ganha evita perdas que são muito mais caras a longo prazo.</p>
+                    </div>
+                </div>
+                 <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-lg border border-slate-200">
+                    <button class="accordion-button flex justify-between items-center w-full p-6 text-left font-semibold">
+                        <span>É difícil de usar? Preciso de treino?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 chevron transition-transform"></i>
+                    </button>
+                    <div class="accordion-content px-6">
+                        <p class="pb-6 text-slate-600">Não! A nossa interface foi desenhada para ser simples e direta ao ponto. Em poucos minutos já estará a lançar pedidos. Além disso, a Somia, nossa assistente virtual, está sempre pronta para ajudar com qualquer dúvida que tenha, 24 horas por dia.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-lg border border-slate-200">
+                    <button class="accordion-button flex justify-between items-center w-full p-6 text-left font-semibold">
+                        <span>Já uso cadernos e planilhas. Por que mudar?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 chevron transition-transform"></i>
+                    </button>
+                    <div class="accordion-content px-6">
+                        <p class="pb-6 text-slate-600">Cadernos e planilhas são propensos a erros, não oferecem visão em tempo real e não integram as suas operações. O Somai automatiza tudo isso, dando-lhe dados precisos para tomar melhores decisões e, o mais importante, mais tempo para se focar na qualidade dos seus pratos e no atendimento aos seus clientes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section id="cta" class="bg-indigo-600">
+        <div class="container mx-auto px-6 py-16 md:py-24 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white">Pronto para Transformar a Gestão do seu Negócio?</h2>
+            <p class="text-indigo-200 mt-4 text-lg max-w-2xl mx-auto">Junte-se a centenas de restaurantes que já estão a economizar tempo e a aumentar os seus lucros com o Somai.</p>
+             <a href="#" class="cta-button inline-block bg-white text-indigo-600 font-bold text-lg py-4 px-10 rounded-lg mt-8 hover:bg-slate-100">
+                Quero Simplificar Minha Gestão
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2024 Somai. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // FAQ Accordion
+        const accordionButtons = document.querySelectorAll('.accordion-button');
+        accordionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                button.classList.toggle('open');
+                
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } 
+            });
+        });
+    </script>
+</body>
+</html>
