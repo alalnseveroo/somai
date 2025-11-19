@@ -124,9 +124,20 @@ export class FinancialsView {
       const expenses = this.state.get('expenses') || [];
       const currentEmployee = this.state.get('employees')?.find(e => e.user_id === this.state.get('currentUser')?.id);
       const myId = currentEmployee?.id || this.state.get('currentEmployee')?.id || null;
-      const commissions = expenses.filter(e => e.type === 'comissao' && e.employee_id === myId);
-      const payments = expenses.filter(e => e.type === 'pagamento_barbeiro' && e.employee_id === myId);
-      const totalCommissions = commissions.reduce((sum, e) => sum + (e.value != null ? e.value : (e.amount != null ? e.amount : 0)), 0);
+      const orders = (this.state.get('orders') || []).filter(o => o.status === 'Concluído' && (String(o.employee_id) === String(myId) || String(o.barbeiro_id) === String(myId)));
+      const orderItems = this.state.get('orderItems') || [];
+      const products = this.state.get('products') || [];
+      let totalCommissions = 0;
+      orders.forEach(o => {
+        const items = orderItems.filter(i => String(i.order_id) === String(o.id));
+        items.forEach(item => {
+          const product = products.find(p => String(p.id) === String(item.product_id));
+          if (!product || product.is_product) return;
+          const commission = Number(product.commission || 0);
+          if (commission > 0) totalCommissions += commission * Number(item.quantity || 1);
+        });
+      });
+      const payments = expenses.filter(e => e.type === 'pagamento_barbeiro' && String(e.employee_id) === String(myId));
       const totalPaid = payments.reduce((sum, e) => sum + (e.value != null ? e.value : (e.amount != null ? e.amount : 0)), 0);
       const remaining = Math.max(0, totalCommissions - totalPaid);
       const today = new Date().toISOString().split('T')[0];
@@ -303,7 +314,29 @@ export class FinancialsView {
     if (onlyCommissions) {
       const currentEmployee = this.state.get('employees')?.find(e => e.user_id === this.state.get('currentUser')?.id);
       const myId = currentEmployee?.id || this.state.get('currentEmployee')?.id || null;
-      filteredExpenses = filteredExpenses.filter(e => e.type === 'comissao' && e.employee_id === myId);
+      const orders = (this.state.get('orders') || []).filter(o => o.status === 'Concluído' && (String(o.employee_id) === String(myId) || String(o.barbeiro_id) === String(myId)));
+      const orderItems = this.state.get('orderItems') || [];
+      const products = this.state.get('products') || [];
+      const commissionEntries = [];
+      orders.forEach(o => {
+        let orderCommission = 0;
+        const items = orderItems.filter(i => String(i.order_id) === String(o.id));
+        items.forEach(item => {
+          const product = products.find(p => String(p.id) === String(item.product_id));
+          if (!product || product.is_product) return;
+          const commission = Number(product.commission || 0);
+          if (commission > 0) orderCommission += commission * Number(item.quantity || 1);
+        });
+        if (orderCommission > 0) {
+          commissionEntries.push({
+            description: `Comissão - Pedido #${o.id}`,
+            date: o.created_at,
+            value: orderCommission,
+            type: 'comissao'
+          });
+        }
+      });
+      filteredExpenses = commissionEntries;
     }
     if (period.start || period.end) {
       filteredExpenses = expenses.filter(e => {
@@ -918,6 +951,7 @@ export class FinancialsView {
   _renderPerformanceChart() {
     const role = this.state.getUserRole();
     const isBarber = role === 'barbeiro';
+    if (isBarber) return '';
     const chartType = this.state.get('chartType') || 'line';
     const granularity = this.state.get('chartGranularity') || 'months';
     const series = this._getRevenueSeries(granularity, isBarber);

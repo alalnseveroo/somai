@@ -143,10 +143,10 @@
                 <!-- Logotipo -->
                 <div class="flex items-center gap-3 px-2 mb-8 flex-shrink-0">
                     <div class="relative w-full">
-                        <button id="tenant-combobox-sidebar" class="flex items-center justify-between w-full gap-2 px-3 py-2 border border-slate-300 rounded-lg text-sm bg-white">
+                        <button id="tenant-combobox-sidebar" class="flex items-center justify-between w-full gap-2 px-3 py-2 border rounded-[12px] text-sm bg-[#FAFAFA] border-[#DEDEDE] whitespace-nowrap">
                             <div class="flex items-center gap-2">
                                 <i data-lucide="building-2" class="w-4 h-4 text-slate-600"></i>
-                                <span id="tenant-name-display-sidebar">Minha Empresa</span>
+                                <span id="tenant-name-display-sidebar" class="truncate">Minha Empresa</span>
                             </div>
                             <i data-lucide="chevron-down" class="w-4 h-4 text-slate-600"></i>
                         </button>
@@ -160,7 +160,7 @@
                 </div>
 
                 <!-- Menu de Navegação -->
-                <nav class="flex-1 space-y-6 overflow-y-auto">
+                <nav class="flex-1 space-y-1 overflow-y-auto">
                     <!-- Grupo Principal -->
                     <div>
                         <span class="px-3 text-xs font-semibold uppercase text-slate-400">Principal</span>
@@ -170,65 +170,57 @@
                                 <span>Métricas</span>
                                 <span class="ml-2 inline-block px-2 py-0.5 bg-slate-200 text-slate-700 rounded text-xs">Em breve</span>
                             </button>
-                            <a href="#" class="nav-link flex items-center gap-3 px-3 py-2 text-sm rounded-lg transition-colors" data-page="financials">
+                            <button type="button" class="nav-link flex items-center gap-3 px-3 py-2 text-sm rounded-lg transition-colors" data-page="financials">
                                 <i data-lucide="dollar-sign" class="w-5 h-5"></i>
                                 <span>Financeiro</span>
-                            </a>
+                            </button>
                         </div>
                     </div>
-                    <!-- Grupo REGISTRO -->
-                    <div>
-                        <span class="px-3 text-xs font-semibold uppercase text-slate-400">REGISTRO</span>
-                        <div class="mt-2 space-y-1">
+                    <div class="space-y-1">
                             <div class="flex items-center justify-between px-3 py-1.5">
-                                <a href="#" class="nav-link business-link flex items-center gap-3 text-sm rounded-lg" data-page="dashboard">
+                                <button type="button" class="nav-link business-link flex items-center gap-3 text-sm rounded-lg" data-page="dashboard">
                                     <i data-lucide="layout-dashboard" class="w-5 h-5"></i><span>Caixa</span>
-                                </a>
+                                </button>
                                 <button class="nav-plus rounded-full w-6 h-6 flex items-center justify-center bg-[#F2F2F2] text-black" data-plus="dashboard" title="Novo">
                                     <span class="text-sm font-bold">+</span>
                                 </button>
                             </div>
-                            <a href="#" class="nav-link business-link flex items-center gap-3 px-3 py-2 text-sm rounded-lg" data-page="deliveries"><i data-lucide="shopping-bag" class="w-5 h-5"></i><span>Pedidos</span></a>
-                            <a href="#" class="nav-link business-link flex items-center gap-3 px-3 py-2 text-sm rounded-lg" data-page="history"><i data-lucide="history" class="w-5 h-5"></i><span>Histórico</span></a>
+                        <button type="button" class="nav-link business-link flex items-center gap-3 px-3 py-2 text-sm rounded-lg" data-page="deliveries"><i data-lucide="shopping-bag" class="w-5 h-5"></i><span>Pedidos</span></button>
+                        <button type="button" class="nav-link business-link flex items-center gap-3 px-3 py-2 text-sm rounded-lg" data-page="history"><i data-lucide="history" class="w-5 h-5"></i><span>Histórico</span></button>
                             <div class="flex items-center justify-between px-3 py-1.5">
-                                <a href="#" class="nav-link business-link flex items-center gap-3 text-sm rounded-lg" data-page="customers">
-                                    <i data-lucide="users" class="w-5 h-5"></i><span>Clientes</span>
-                                </a>
+                            <button type="button" class="nav-link business-link flex items-center gap-3 text-sm rounded-lg" data-page="customers">
+                                <i data-lucide="users" class="w-5 h-5"></i><span>Clientes</span>
+                            </button>
                                 <button class="nav-plus rounded-full w-6 h-6 flex items-center justify-center bg-[#F2F2F2] text-black" data-plus="customers" title="Novo">
                                     <span class="text-sm font-bold">+</span>
                                 </button>
                             </div>
-                        </div>
                     </div>
-                     <!-- Grupo Gestão -->
-                    <div>
-                        <span class="px-3 text-xs font-semibold uppercase text-slate-400">Gestão</span>
-                        <div class="mt-2 space-y-1">
+                    <div class="space-y-1">
                             <div class="flex items-center justify-between px-3 py-1.5">
-                                <a href="#" class="nav-link flex items-center gap-3 text-sm rounded-lg" data-page="products">
-                                    <i data-lucide="package" class="w-5 h-5"></i><span>Serviços</span>
-                                </a>
+                            <button type="button" class="nav-link flex items-center gap-3 text-sm rounded-lg" data-page="products">
+                                <i data-lucide="package" class="w-5 h-5"></i><span>Serviços</span>
+                            </button>
                                 <button class="nav-plus rounded-full w-6 h-6 flex items-center justify-center bg-[#F2F2F2] text-black" data-plus="products" title="Novo">
                                     <span class="text-sm font-bold">+</span>
                                 </button>
                             </div>
                             <div class="flex items-center justify-between px-3 py-1.5">
-                                <a href="#" class="nav-link flex items-center gap-3 text-sm rounded-lg" data-page="inventory">
-                                    <i data-lucide="boxes" class="w-5 h-5"></i><span>Estoque</span>
-                                </a>
+                            <button type="button" class="nav-link flex items-center gap-3 text-sm rounded-lg" data-page="inventory">
+                                <i data-lucide="boxes" class="w-5 h-5"></i><span>Estoque</span>
+                            </button>
                                 <button class="nav-plus rounded-full w-6 h-6 flex items-center justify-center bg-[#F2F2F2] text-black" data-plus="inventory" title="Novo">
                                     <span class="text-sm font-bold">+</span>
                                 </button>
                             </div>
                             <div class="flex items-center justify-between px-3 py-1.5">
-                                <a href="#" class="nav-link flex items-center gap-3 text-sm rounded-lg" data-page="employees">
-                                    <i data-lucide="users" class="w-5 h-5"></i><span>Funcionários</span>
-                                </a>
+                            <button type="button" class="nav-link flex items-center gap-3 text-sm rounded-lg" data-page="employees">
+                                <i data-lucide="users" class="w-5 h-5"></i><span>Funcionários</span>
+                            </button>
                                 <button class="nav-plus rounded-full w-6 h-6 flex items-center justify-center bg-[#F2F2F2] text-black" data-plus="employees" title="Novo">
                                     <span class="text-sm font-bold">+</span>
                                 </button>
                             </div>
-                        </div>
                     </div>
                 </nav>
                 
@@ -238,8 +230,8 @@
                         <span id="plan-tenants-remaining-text">0 empresas restantes</span>
                     </div>
                     <div class="px-3 pb-3">
-                        <div class="w-full h-2 bg-slate-200 rounded-full">
-                            <div id="plan-tenants-progress" class="h-2 bg-green-500 rounded-full" style="width:0%"></div>
+                        <div class="w-full rounded-full" style="height:3px; background:#e2e8f0;">
+                            <div id="plan-tenants-progress" class="bg-green-500 rounded-full" style="height:3px; width:0%"></div>
                         </div>
                     </div>
                 </div>
@@ -338,8 +330,11 @@
     </div>
 
     <style>
-      .nav-link i, .nav-link span { color: #9A9A9A; }
-      .nav-link.active-link i, .nav-link.active-link span { color: #000000; }
+      .nav-link { color: #9A9A9A; }
+      .nav-link i, .nav-link span { color: inherit; }
+      .nav-link.active-link { color: #000000; }
+      #sidebar nav { scrollbar-width: none; -ms-overflow-style: none; }
+      #sidebar nav::-webkit-scrollbar { display: none; }
     </style>
     <!-- Modal de Criação de Despesa -->
     <div id="expense-creation-modal" class="modal-container fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-40 opacity-0 pointer-events-none transition-opacity duration-300 p-5">

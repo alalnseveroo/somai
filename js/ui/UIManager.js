@@ -397,6 +397,20 @@ export class UIManager {
 
       link.style.display = visible ? 'flex' : 'none';
     });
+
+    // Controlar visibilidade dos botões "+" no sidebar
+    this.elements.navPlusButtons.forEach(btn => {
+      const target = btn.getAttribute('data-plus');
+      let visible = true;
+      if (role === 'barbeiro') {
+        visible = barbeiroAllowedPages.includes(target);
+      } else if (role === 'caixa') {
+        visible = caixaAllowedPages.includes(target);
+      } else {
+        visible = true;
+      }
+      btn.style.display = visible ? 'flex' : 'none';
+    });
   }
 
   async handleLogout() {

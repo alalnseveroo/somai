@@ -389,7 +389,7 @@ export class OrderCreateView {
             </select>
           </div>
           
-          <button type="button" id="add-customer-btn" 
+          <button type="button" id="order-add-customer-btn" 
                   class="w-full text-left px-3 py-2 border border-dashed border-slate-300 rounded-lg 
                          text-slate-600 hover:border-indigo-400 hover:text-indigo-600 text-sm">
             <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>
@@ -415,12 +415,12 @@ export class OrderCreateView {
           </div>
           
           <div class="flex gap-2">
-            <button type="button" id="cancel-new-customer-btn" 
+            <button type="button" id="order-cancel-new-customer-btn" 
                     class="flex-1 bg-slate-200 text-slate-800 font-semibold py-2 px-4 rounded-lg 
                            hover:bg-slate-300 transition-colors text-sm">
               Cancelar
             </button>
-            <button type="button" id="save-new-customer-btn" 
+            <button type="button" id="order-save-new-customer-btn" 
                     class="flex-1 bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg 
                            hover:bg-indigo-700 transition-colors text-sm">
               Salvar Cliente
@@ -675,34 +675,38 @@ export class OrderCreateView {
     }
 
     // Adicionar cliente
-    const addCustomerBtn = document.getElementById('add-customer-btn');
+    const addCustomerBtn = document.getElementById('order-add-customer-btn');
     if (addCustomerBtn) {
       addCustomerBtn.addEventListener('click', () => {
         const customerSelection = document.getElementById('customer-selection');
         const newCustomerForm = document.getElementById('new-customer-form');
         if (customerSelection && newCustomerForm) {
           customerSelection.style.display = 'none';
+          customerSelection.classList.add('hidden');
           newCustomerForm.style.display = 'block';
+          newCustomerForm.classList.remove('hidden');
         }
       });
     }
 
     // Cancelar adição de cliente
-    const cancelNewCustomerBtn = document.getElementById('cancel-new-customer-btn');
+    const cancelNewCustomerBtn = document.getElementById('order-cancel-new-customer-btn');
     if (cancelNewCustomerBtn) {
       cancelNewCustomerBtn.addEventListener('click', () => {
         const customerSelection = document.getElementById('customer-selection');
         const newCustomerForm = document.getElementById('new-customer-form');
         if (customerSelection && newCustomerForm) {
           newCustomerForm.style.display = 'none';
+          newCustomerForm.classList.add('hidden');
           customerSelection.style.display = 'block';
+          customerSelection.classList.remove('hidden');
         }
         this._resetNewCustomerForm();
       });
     }
 
     // Salvar novo cliente
-    const saveNewCustomerBtn = document.getElementById('save-new-customer-btn');
+    const saveNewCustomerBtn = document.getElementById('order-save-new-customer-btn');
     if (saveNewCustomerBtn) {
       saveNewCustomerBtn.addEventListener('click', () => {
         this._saveNewCustomer();
@@ -1053,12 +1057,10 @@ export class OrderCreateView {
     }
     
     try {
-      // Salvar nome completo no banco de dados
       const fullName = `${firstName} ${lastName}`;
-      
       const customerData = {
         name: fullName,
-        user_id: this.state.get('currentUser')?.id
+        tenant_id: this.state.get('tenantId')
       };
       
       const customer = await this.services.customer.create(customerData);

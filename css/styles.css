@@ -42,13 +42,13 @@ input[type='number'] {
 
 /* Active Link Style */
 .active-link { 
-    background-color: #f1f5f9; /* slate-100 */
-    color: #0f172a; /* slate-900 */
-    font-weight: 600; /* semibold */
+    background-color: transparent;
+    color: #000000;
+    font-weight: 600;
 }
 
 .active-link i {
-    color: #4f46e5; /* indigo-600 */
+    color: #000000;
 }
 
 /* Loader Animation */

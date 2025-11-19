@@ -233,6 +233,9 @@ export class CustomersView {
    */
   _showCustomerForm(customer = null) {
     const isEdit = !!customer;
+    const nameParts = (customer?.name || '').trim().split(' ');
+    const firstPrefill = nameParts.length ? nameParts[0] : '';
+    const lastPrefill = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
     
     const content = `
       <form id="customer-form" class="space-y-4">
@@ -244,7 +247,7 @@ export class CustomersView {
             <input type="text" 
                    id="customer-first-name" 
                    required 
-                   value="${customer?.first_name || ''}"
+                   value="${firstPrefill}"
                    class="w-full px-4 py-2.5 border border-slate-300 rounded-lg 
                           focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
                    placeholder="Primeiro nome">
@@ -257,7 +260,7 @@ export class CustomersView {
             <input type="text" 
                    id="customer-last-name" 
                    required 
-                   value="${customer?.last_name || ''}"
+                   value="${lastPrefill}"
                    class="w-full px-4 py-2.5 border border-slate-300 rounded-lg 
                           focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
                    placeholder="Último nome">
@@ -311,9 +314,8 @@ export class CustomersView {
       }
 
       const customerData = { 
-        first_name: firstName, 
-        last_name: lastName, 
-        name: `${firstName} ${lastName}`
+        name: `${firstName} ${lastName}`,
+        tenant_id: this.state.get('tenantId')
       };
 
       if (customerId) {

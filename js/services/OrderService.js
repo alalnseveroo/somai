@@ -358,34 +358,6 @@ export class OrderService {
     const employees = this.state.get('employees') || [];
     const employee = employees.find(e => e.id === employeeId);
     if (!employee || employee.role !== 'barbeiro') return;
-
-    const existing = await this.db.query('expenses', q => q.eq('order_id', orderId).eq('type', 'comissao'));
-    if (existing && existing.length > 0) return;
-
-    const items = await this.db.query('order_items', q => q.eq('order_id', orderId));
-    const products = this.state.get('products') || [];
-
-    let totalCommission = 0;
-    items.forEach(item => {
-      const product = products.find(p => p.id === item.product_id);
-      if (!product) return;
-      if (product.is_product) return;
-      const commission = Number(product.commission || 0);
-      if (commission > 0) {
-        totalCommission += commission * Number(item.quantity || 1);
-      }
-    });
-
-    if (totalCommission > 0) {
-      await this.db.insert('expenses', {
-        employee_id: employeeId,
-        order_id: orderId,
-        type: 'comissao',
-        description: `Comissão - Pedido #${orderId}`,
-        value: totalCommission,
-        date: new Date().toISOString().split('T')[0]
-      });
-    }
   }
 
   /**
