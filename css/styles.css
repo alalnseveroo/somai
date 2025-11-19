@@ -1,0 +1,197 @@
+body { 
+    font-family: 'Inter', sans-serif; 
+    background-color: #f8fafc; /* slate-50 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+input::-webkit-outer-spin-button, 
+input::-webkit-inner-spin-button { 
+    -webkit-appearance: none; 
+    appearance: none; 
+    margin: 0; 
+}
+
+input[type='number'] { 
+    -moz-appearance: textfield; 
+    appearance: textfield; 
+}
+
+/* Toast Animation */
+@keyframes fadeInOut { 
+    0%, 100% { opacity: 0; transform: translateY(-20px); } 
+    10%, 90% { opacity: 1; transform: translateY(0); } 
+}
+
+.toast { 
+    animation: fadeInOut 4s ease-in-out forwards; 
+}
+
+/* Sale Notification Animation */
+@keyframes slide-in-out {
+    0% { transform: translate(-50%, -150%); opacity: 0; }
+    10% { transform: translate(-50%, 0); opacity: 1; }
+    90% { transform: translate(-50%, 0); opacity: 1; }
+    100% { transform: translate(-50%, -150%); opacity: 0; }
+}
+
+#sale-notification.show {
+    display: flex;
+    animation: slide-in-out 3s ease-in-out forwards;
+}
+
+/* Active Link Style */
+.active-link { 
+    background-color: #f1f5f9; /* slate-100 */
+    color: #0f172a; /* slate-900 */
+    font-weight: 600; /* semibold */
+}
+
+.active-link i {
+    color: #4f46e5; /* indigo-600 */
+}
+
+/* Loader Animation */
+.loader { 
+    border: 4px solid #e2e8f0; /* slate-200 */ 
+    border-top: 4px solid #4f46e5; /* indigo-600 */ 
+    border-radius: 50%; 
+    width: 32px; 
+    height: 32px; 
+    animation: spin 1s linear infinite; 
+}
+
+@keyframes spin { 
+    0% { transform: rotate(0deg); } 
+    100% { transform: rotate(360deg); } 
+}
+
+.pointer-events-none { 
+    pointer-events: none; 
+}
+
+/* Modal Animation */
+.modal-container.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content.open {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal-container {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal-content {
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+
+#order-creation-modal .modal-content {
+    width: calc(100% - 60px);
+    height: calc(100% - 60px);
+    max-width: 1600px;
+}
+
+@media (max-width: 640px) {
+    .modal-content {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 0.75rem;
+    }
+}
+
+/* Toggle Switch Style */
+.toggle-checkbox:checked + .toggle-label {
+    background-color: #3b82f6; /* blue-500 */
+}
+
+.toggle-checkbox:checked + .toggle-label::after {
+    transform: translateX(100%);
+}
+
+#internal-consumption-toggle:checked + .toggle-label {
+    background-color: #4f46e5; /* indigo-600 */
+}
+
+.toggle-view-checkbox:checked + .toggle-view-label {
+    background-color: #16a34a; /* green-600 */
+}
+
+.toggle-view-checkbox:checked + .toggle-view-label .dot {
+    transform: translateX(100%);
+}
+
+/* Notification Bell Animation */
+@keyframes ring {
+    0%, 100% { transform: rotate(0); }
+    10%, 90% { transform: rotate(15deg); }
+    20%, 80% { transform: rotate(-10deg); }
+    30%, 70% { transform: rotate(10deg); }
+    40%, 60% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+.has-notification .bell-icon {
+    animation: ring 1s ease-in-out;
+}
+
+.avatar-option.selected {
+    outline: 3px solid #4f46e5;
+    outline-offset: 2px;
+}
+
+/* Support Chat Popup */
+#support-chat-popup {
+    transition: all 0.3s ease-in-out;
+}
+
+.chat-message-somia {
+    background-color: #eef2ff; /* indigo-50 */
+    align-self: flex-start;
+}
+
+.chat-message-user {
+    background-color: #f1f5f9; /* slate-100 */
+    align-self: flex-end;
+}
+
+@keyframes typing-dot {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-3px); }
+    50% { transform: translateY(0); }
+}
+
+.typing-indicator span {
+    animation: typing-dot 1.2s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) { 
+    animation-delay: 0.2s; 
+}
+
+.typing-indicator span:nth-child(3) { 
+    animation-delay: 0.4s; 
+}
+
+/* Custom Login Page Styles */
+#auth-container {
+    background-color: #f0f4ff;
+    background-image: 
+        radial-gradient(at 0% 0%, hsla(253, 100%, 95%, 1) 0px, transparent 50%),
+        radial-gradient(at 98% 1%, hsla(22, 100%, 93%, 1) 0px, transparent 50%),
+        radial-gradient(at 79% 40%, hsla(211, 100%, 89%, 1) 0px, transparent 50%),
+        radial-gradient(at 2% 99%, hsla(334, 100%, 91%, 1) 0px, transparent 50%);
+}
+#select-service:checked + .type-service-card {
+    background-color: #DCFFD2;
+    border-color: #B6F9A2;
+}
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
